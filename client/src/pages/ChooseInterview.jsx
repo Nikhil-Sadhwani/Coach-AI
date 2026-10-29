@@ -75,10 +75,11 @@ export default function ChooseInterview() {
   if (loading) {
     return (
       <main
-        className="min-h-screen flex items-center justify-center text-emerald-400"
+        className="min-h-screen flex items-center justify-center text-white"
         style={{
           background:
             "linear-gradient(to bottom right, #0f172a, #111827, #172554)",
+          color: "#ffffff",
         }}
       >
         Loading interview options...

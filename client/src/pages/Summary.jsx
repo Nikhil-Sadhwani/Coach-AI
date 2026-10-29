@@ -48,7 +48,7 @@ export default function Summary() {
 
   if (loading) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-gray-900 text-emerald-400">
+      <main className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
         Loading your results...
       </main>
     );
