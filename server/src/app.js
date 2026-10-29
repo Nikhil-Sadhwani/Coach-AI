@@ -6,6 +6,7 @@ import MongoStore from "connect-mongo";
 import authRoutes from "./routes/authRoutes.js";
 import interviewRoutes from "./routes/interviewRoutes.js";
 import voiceRoutes from "./routes/voiceRoutes.js";
+import connectDB from "./config/db.js";
 
 const app = express();
 
@@ -18,6 +19,25 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    console.error(
+      "Database unavailable for request:",
+      error.message
+    );
+
+    return res.status(503).json({
+      success: false,
+      message: "Database connection unavailable",
+    });
+  }
+});
+
 
 app.use(
   session({
